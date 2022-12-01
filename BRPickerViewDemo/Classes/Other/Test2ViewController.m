@@ -49,7 +49,6 @@
     NSLog(@"点击标题");
     
     BRMutableDatePickerView *datePickerView = [[BRMutableDatePickerView alloc]init];
-    datePickerView.minDate = [NSDate date];
     datePickerView.selectDate = self.selectDate;
     datePickerView.hiddenDateUnit = YES;
     datePickerView.hiddenMonth = self.hiddenMonth;

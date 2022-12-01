@@ -12,7 +12,7 @@
 
 #import <UIKit/UIKit.h>
 
-// 屏幕安全区域下边距
+// 底部安全区域高度
 #define BR_BOTTOM_MARGIN \
 ({CGFloat safeBottomHeight = 0;\
 if (@available(iOS 11.0, *)) {\
@@ -65,19 +65,12 @@ static inline UIWindow *BRGetKeyWindow(void) {
                 }
             }
         }
-    }
+    } else
 #endif
-        
-    if (!keyWindow) {
-        keyWindow = [UIApplication sharedApplication].windows.firstObject;
-        if (!keyWindow.isKeyWindow) {
+    {
 #if __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
-            UIWindow *window = [UIApplication sharedApplication].keyWindow;
-            if (CGRectEqualToRect(window.bounds, UIScreen.mainScreen.bounds)) {
-                keyWindow = window;
-            }
+        return [UIApplication sharedApplication].keyWindow;
 #endif
-        }
     }
     
     return keyWindow;
