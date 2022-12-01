@@ -28,6 +28,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 其它扩展字段
 @property (nullable, nonatomic, copy) NSString *remark;
+@property (nullable, nonatomic, copy) NSString *end_address_all;
+@property (nullable, nonatomic, copy) NSString *start_address_all;
+@property (nullable, nonatomic, copy) NSString *fee_type;
+@property (nullable, nonatomic, copy) NSString *start_address_id;
+@property (nullable, nonatomic, copy) NSString *address_name;
+@property (nullable, nonatomic, copy) NSString *consignee_man;
+@property (nullable, nonatomic, copy) NSString *consignee_name;
+@property (nullable, nonatomic, copy) NSString *consignee_phone;
+@property (nullable, nonatomic, copy) NSString *consignor_man;
+@property (nullable, nonatomic, copy) NSString *consignor_phone;
+@property (nullable, nonatomic, copy) NSString *end_address;
+@property (nullable, nonatomic, copy) NSString *end_address_id;
+@property (nullable, nonatomic, copy) NSString *end_address_name;
+@property (nullable, nonatomic, copy) NSString *end_area;
+@property (nullable, nonatomic, copy) NSString *end_gis_lat;
+@property (nullable, nonatomic, copy) NSString *end_gis_lng;
+@property (nullable, nonatomic, copy) NSString *start_name;
 @property (nonatomic, assign) BOOL boolField;
 @property (nullable, nonatomic, strong) id idField;
 @property (nullable, nonatomic, strong) NSNumber *numberField;
