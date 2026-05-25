@@ -26,13 +26,13 @@ typedef NS_ENUM(NSInteger, BRBorderStyle) {
 @interface BRPickerStyle : NSObject
 
 
-/////////////////////////////// 蒙层视图（maskView）///////////////////////////////
+/////////////////////////////// 蒙层视图（customMaskView）///////////////////////////////
 
 /** 设置背景颜色 */
 @property (nullable, nonatomic, strong) UIColor *maskColor;
 
-/** 隐藏 maskView，默认为 NO */
-@property (nonatomic, assign) BOOL hiddenMaskView;
+/** 隐藏 customMaskView，默认为 NO */
+@property (nonatomic, assign) BOOL hiddenCustomMaskView;
 
 
 ////////////////////////////// 弹框视图（alertView）///////////////////////////////

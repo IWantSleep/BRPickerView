@@ -19,7 +19,7 @@
 
 @interface BRMutableDatePickerView ()<UIPickerViewDataSource, UIPickerViewDelegate>
 // 蒙层视图
-@property (nonatomic, strong) UIView *maskView;
+@property (nonatomic, strong) UIView *customMaskView;
 // 弹出背景视图
 @property (nonatomic, strong) UIView *alertView;
 // 标题栏背景视图
@@ -68,7 +68,7 @@
     // 设置子视图的宽度随着父视图变化
     self.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
-    [self addSubview:self.maskView];
+    [self addSubview:self.customMaskView];
     
     [self addSubview:self.alertView];
     [self.alertView addSubview:self.titleBarView];
@@ -78,17 +78,17 @@
 }
 
 #pragma mark - 蒙层视图
-- (UIView *)maskView {
-    if (!_maskView) {
-        _maskView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
-        _maskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2f];
+- (UIView *)customMaskView {
+    if (!_customMaskView) {
+        _customMaskView = [[UIView alloc]initWithFrame:[UIScreen mainScreen].bounds];
+        _customMaskView.backgroundColor = [UIColor colorWithWhite:0 alpha:0.2f];
         // 设置子视图的大小随着父视图变化
-        _maskView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        _maskView.userInteractionEnabled = YES;
+        _customMaskView.autoresizingMask = UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        _customMaskView.userInteractionEnabled = YES;
         UITapGestureRecognizer *myTap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(didTapMaskView:)];
-        [_maskView addGestureRecognizer:myTap];
+        [_customMaskView addGestureRecognizer:myTap];
     }
-    return _maskView;
+    return _customMaskView;
 }
 
 #pragma mark - 弹框视图
@@ -281,7 +281,7 @@
     rect.origin.y = self.bounds.size.height;
     self.alertView.frame = rect;
     // 弹出动画
-    self.maskView.alpha = 1;
+    self.customMaskView.alpha = 1;
     [UIView animateWithDuration:0.3 animations:^{
         CGRect rect = self.alertView.frame;
         rect.origin.y -= kPickerViewHeight + kTitleBarViewHeight + BR_BOTTOM_MARGIN;
@@ -296,7 +296,7 @@
         CGRect rect = self.alertView.frame;
         rect.origin.y += kPickerViewHeight + kTitleBarViewHeight + BR_BOTTOM_MARGIN;
         self.alertView.frame = rect;
-        self.maskView.alpha = 0;
+        self.customMaskView.alpha = 0;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
